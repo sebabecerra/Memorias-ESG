@@ -48,8 +48,47 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" onclick="switchText()">Aplicar</button>
+            <button type="button" class="btn btn-primary" 
+                    onclick="switchText()">Aplicar</button>
           </div>
         </div>
       </div>
     </div>
+    <div id="container"></div>
+    <script>
+        let theChart;
+        function switchText() {
+                       var text = document.getElementById("inputText").value;
+            var wordCount = {};
+            var maxWord = "";
+            var maxCount = 0;
+            var words = text.replace(/[^a-zA-Z\s]+/g,'').split(" ");
+            for (var i = 0; i < words.length; i++) {
+                if (wordCount[words[i]] === undefined) {
+                    wordCount[words[i]] = 1;
+                } else {
+                    wordCount[words[i]]++;
+                }
+                if (wordCount[words[i]] > maxCount) {
+                    maxWord = words[i];
+                    maxCount = wordCount[words[i]];
+                }
+            }
+            theChart = anychart.wordtree(text);
+            theChart.word(maxWord);
+            theChart
+              .title()
+              .enabled(true)
+              .useHtml(true)
+              .text('<span style = "color: #2b2b2b; font-size:20px;">Explora la Memoria del Banco Seleccionado</span>');
+            theChart.fontColor("#0daf8d");
+            theChart.fontWeight(500);
+            theChart.fontStyle('italic');
+            theChart.minFontSize(8);
+            theChart.maxFontSize(16);
+            theChart.container("container");
+            theChart.draw();
+        }
+    </script>
+  </body>
+</html>
