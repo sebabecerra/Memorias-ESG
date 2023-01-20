@@ -4,7 +4,6 @@
     <title>SBC Banks Word Treet</title>
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-wordtree.min.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <style type="text/css">      
       html, body, #container { 
         width: 100%; 
@@ -29,12 +28,12 @@
     </style>
   </head>
   <body>
-      <div class="button-container">
-            <span>Elige la palabra Raíz: </span>
-            <input type="text" id="newRoot"></input>
-            <button onclick="switchRoot()">Change</button>
-            <textarea id="textarea"></textarea>
-      </div>
+    <div class="button-container">
+      <span>Elige la palabra Raíz: </span>
+      <input type="text" id="newRoot"></input>
+      <button onclick="switchRoot()">Change</button>
+      <textarea id="textarea"></textarea>
+    </div>
     <div id="container"></div>
     <script>
         let theChart;
@@ -55,7 +54,6 @@
                 chart.maxFontSize(16);
                 chart.container("container");
                 chart.draw();
-            });
         });
         function switchRoot() {
             var newRoot = document.getElementById("newRoot").value;
@@ -64,3 +62,4 @@
     </script>
   </body>    
 </html>
+
