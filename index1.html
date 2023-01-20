@@ -4,7 +4,6 @@
     <title>SBC Banks Word Treet</title>
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-wordtree.min.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <style type="text/css">      
       html, body, #container { 
         width: 100%; 
@@ -32,22 +31,22 @@
     <div class="button-container">
       <span>Elige la palabra Raíz: </span>
       <input type="text" id="newRoot"></input>
-      <button onclick="switchRoot()">Change</button>
+    </div>
+    <div class="input-container">
+      <textarea id="textarea"></textarea>
+      <button onclick="drawChart()">Draw Chart</button>
     </div>
     <div id="container"></div>
-    <script>
+      <script>
         let theChart;
-        anychart.onDocumentReady(function () {
-            $.ajax( 'https://raw.githubusercontent.com/sebabecerra/Memorias-ESG/main/bci1.txt'
-            ).done(function (text) {
+        function drawChart() {
+            let text = document.getElementById("textarea").value;
+            if (text) {
                 var chart = anychart.wordtree(text);
                 theChart = chart;
-                chart.word('banco');
-                chart
-                  .title()
-                  .enabled(true)
-                  .useHtml(true)
-                  .text('<span style = "color: #2b2b2b; font-size:20px;">Explora la Memoria del Banco Seleccionado</span>');
+                var newRoot = document.getElementById("newRoot").value;
+                chart.word(newRoot);
+                chart.title().enabled(true).useHtml(true).text('<span style = "color: #2b2b2b; font-size:20px;">Explora la Memoria del Banco Seleccionado</span>');
                 chart.fontColor("#0daf8d");
                 chart.fontWeight(500);
                 chart.fontStyle('italic');
@@ -55,12 +54,10 @@
                 chart.maxFontSize(16);
                 chart.container("container");
                 chart.draw();
-            });
-        });
-        function switchRoot() {
-            var newRoot = document.getElementById("newRoot").value;
-            theChart.word(newRoot);
+            }
         }
     </script>
   </body>    
 </html>
+
+    
