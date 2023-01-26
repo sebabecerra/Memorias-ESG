@@ -39,24 +39,32 @@
     </div>
     <div id="container"></div>
     <script>
-        let theChart;
-        function drawChart() {
-            let text = document.getElementById("textarea").value;
-            if (text) {
-                var chart = anychart.wordtree(text);
-                theChart = chart;
-                var newRoot = document.getElementById("newRoot").value;
-                chart.word(newRoot);
-                chart.title().enabled(true).useHtml(true).text('<span style = "color: #2b2b2b; font-size:20px;">Explora la Memoria del Banco Seleccionado</span>');
-                chart.fontColor("#0daf8d");
-                chart.fontWeight(500);
-                chart.fontStyle('italic');
-                chart.minFontSize(8);
-                chart.maxFontSize(16);
-                chart.container("container");
-                chart.draw();
-            }
+      Copy code
+    function drawChart() {
+        //Remove the existing chart
+        if (theChart) {
+            theChart.dispose();
         }
+
+        let text = document.getElementById("textarea").value;
+        if (text) {
+            var chart = anychart.wordtree(text);
+            theChart = chart;
+            var newRoot = document.getElementById("newRoot").value;
+            chart.word(newRoot);
+            chart.title().enabled(true).useHtml(true).text('<span style = "color: #2b2b2b; font-size:20px;">Explora la Memoria del Banco Seleccionado</span>');
+            chart.fontColor("#0daf8d");
+            chart.fontWeight(500);
+            chart.fontStyle('italic');
+            chart.minFontSize(8);
+            chart.maxFontSize(16);
+            chart.container("container");
+            chart.draw();
+        }
+    }
+
+      
+      
     </script>
   </body>    
 </html>
