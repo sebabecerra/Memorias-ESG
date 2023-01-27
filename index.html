@@ -6,36 +6,42 @@
     <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-wordtree.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <style type="text/css">
-      .main-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
+       textarea#textarea {
+            width: 80%; /* 80% del ancho de la página */
+            height: 200px; /* 5 veces más alto que el tamaño predeterminado */
+      }      
+      html, body, #container { 
+        width: 100%; 
+        height: 100%; 
+        margin: 0; 
+        padding: 0; 
+      } 
+      .button-container{
+        padding: 20px 0 0 20px;
+        font-family: 'Arial'
       }
-
-      .text-container {
-        text-align: left;
-      }
-
-      #textarea {
-        width: 80%;
-        height: 500px;
+      button{
+        border: 1px solid #222222;
+        border-radius: 8px;
+        color: #222222;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 4px 18px;
+        margin-right: 10px;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <div class="main-container">
-      <div class="text-container">
-        <textarea id="textarea"></textarea>
-        <br>
-        <br>
-        <span>Elige la palabra Raíz: </span>
-        <input type="text" id="newRoot"></input>
-        <button onclick="drawChart()">Draw Chart</button>
-      </div>
-      <div id="container"></div>
+    <div class="button-container">
+      <textarea id="textarea"></textarea>
+      <br>
+      <br>
+      <span>Elige la palabra Raíz: </span>
+      <input type="text" id="newRoot"></input>
+      <button onclick="drawChart()">Draw Chart</button>
     </div>
+    <div id="container"></div>
     <script>
         let theChart;
         function drawChart() {
