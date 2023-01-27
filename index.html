@@ -34,13 +34,13 @@
     </style>
   </head>
   <body>
-    <div class="button-container" style="display: flex; justify-content: center;">>
+    <div class="input-container" style="display: flex; justify-content: center;">>
       <textarea id="textarea"></textarea>
-      <br>
-      <br>
-      <span>Elige la palabra Raíz: </span>
-      <input type="text" id="newRoot"></input>
-      <button onclick="drawChart()">Draw Chart</button>
+      <div class="new-root-container">
+        <span>Elige la palabra Raíz: </span>
+        <input type="text" id="newRoot"></input>
+          <button onclick="drawChart()">Draw Chart</button>
+      </div>
     </div>
     <div id="container"></div>
     <script>
